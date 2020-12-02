@@ -41,3 +41,10 @@ After each 10 minutes the driver and navigator switch roles.
 
 Mob programming (or: ensemble programming) is pair programming with a larger group.
 Often, this means the group as a whole is navigating, while one person is typing.
+
+## Business rules for the word importer
+We want to import words that confirm to the following rules:
+
+1. The word exists only of 5, 6 or 7 letters
+2. The word does not contain a capital letter (lower-case only)
+3. The word does not contain any symbols other than letters
