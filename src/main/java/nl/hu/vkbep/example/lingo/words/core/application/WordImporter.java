@@ -4,6 +4,10 @@ import nl.hu.vkbep.example.lingo.words.core.domain.WordFilter;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordReader;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
 
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 public class WordImporter {
 	private final WordReader reader;
 	private final WordFilter filter;
@@ -16,6 +20,12 @@ public class WordImporter {
 	}
 
 	public void importWords() {
-		// TODO: implement
+		List<String> filteredWords = reader
+				.readWords()
+				.stream()
+				.filter(filter::verify)
+				.collect(toList());
+
+		writer.writeWords(filteredWords);
 	}
 }
