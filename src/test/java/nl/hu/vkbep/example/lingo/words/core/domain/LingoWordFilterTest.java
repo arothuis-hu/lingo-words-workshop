@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LingoWordFilterTest {
 
-
-
 	@Test
 	void accepts_words_of_5_letters() {
 		LingoWordFilter filter = new LingoWordFilter();
@@ -17,4 +15,15 @@ class LingoWordFilterTest {
 
 		assertTrue(accepts);
 	}
+
+	@Test
+	void rejects_words_of_4_letters() {
+		LingoWordFilter filter = new LingoWordFilter();
+		String word = "bier";
+
+		boolean accepts = filter.verify(word);
+
+		assertFalse(accepts);
+	}
+
 }
