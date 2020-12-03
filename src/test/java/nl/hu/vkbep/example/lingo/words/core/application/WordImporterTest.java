@@ -6,10 +6,7 @@ import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
 import static org.mockito.Mockito.*;
 
 class WordImporterTest {
