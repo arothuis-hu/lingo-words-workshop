@@ -23,6 +23,7 @@ class LingoWordFilterTest {
 		return Stream.of(
 				Arguments.of("pizza", true),
 				Arguments.of("pizzas", true),
+				Arguments.of("backend", true),
 				Arguments.of("beer", false)
 		);
 	}
