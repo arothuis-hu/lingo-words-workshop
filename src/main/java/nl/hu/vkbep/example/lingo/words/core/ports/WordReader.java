@@ -1,7 +1,7 @@
 package nl.hu.vkbep.example.lingo.words.core.ports;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface WordReader {
-	List<String> readWords();
+	Stream<String> readWords();
 }

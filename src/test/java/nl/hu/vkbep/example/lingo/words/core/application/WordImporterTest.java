@@ -6,7 +6,10 @@ import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.*;
 import static org.mockito.Mockito.*;
 
 class WordImporterTest {
@@ -20,7 +23,7 @@ class WordImporterTest {
 
 		WordReader mockReader = mock(WordReader.class);
 		when(mockReader.readWords())
-			.thenReturn(wordList);
+			.thenReturn(wordList.stream());
 
 		WordFilter mockFilter = mock(WordFilter.class);
 		when(mockFilter.verify(anyString()))

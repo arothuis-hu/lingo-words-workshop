@@ -22,7 +22,6 @@ public class WordImporter {
 	public void importWords() {
 		List<String> filteredWords = reader
 				.readWords()
-				.stream()
 				.filter(filter::verify)
 				.collect(toList());
 
