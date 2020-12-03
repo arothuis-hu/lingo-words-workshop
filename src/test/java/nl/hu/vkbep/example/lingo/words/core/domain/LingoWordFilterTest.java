@@ -2,6 +2,11 @@ package nl.hu.vkbep.example.lingo.words.core.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,31 +19,18 @@ class LingoWordFilterTest {
 		filter = new LingoWordFilter();
 	}
 
-	@Test
-	void accepts_words_of_5_letters() {
-		String word = "pizza";
-
-		boolean accepts = filter.verify(word);
-
-		assertTrue(accepts);
+	static Stream<Arguments> provideWordsOfVaryingLength() {
+		return Stream.of(
+				Arguments.of("pizza", true),
+				Arguments.of("pizzas", true),
+				Arguments.of("beer", false)
+		);
 	}
 
-	@Test
-	void accepts_words_of_6_letters() {
-		String word = "pizzas";
-
+	@ParameterizedTest
+	@MethodSource("provideWordsOfVaryingLength")
+	void accepts_words_of_5_6_7_letters(String word, boolean shouldAccept) {
 		boolean accepts = filter.verify(word);
-
-		assertTrue(accepts);
+		assertEquals(shouldAccept, accepts);
 	}
-
-	@Test
-	void rejects_words_of_4_letters() {
-		String word = "bier";
-
-		boolean accepts = filter.verify(word);
-
-		assertFalse(accepts);
-	}
-
 }
