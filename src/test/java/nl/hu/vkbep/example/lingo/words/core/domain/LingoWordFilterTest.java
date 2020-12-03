@@ -17,6 +17,16 @@ class LingoWordFilterTest {
 	}
 
 	@Test
+	void accepts_words_of_6_letters() {
+		LingoWordFilter filter = new LingoWordFilter();
+		String word = "pizzas";
+
+		boolean accepts = filter.verify(word);
+
+		assertTrue(accepts);
+	}
+
+	@Test
 	void rejects_words_of_4_letters() {
 		LingoWordFilter filter = new LingoWordFilter();
 		String word = "bier";
