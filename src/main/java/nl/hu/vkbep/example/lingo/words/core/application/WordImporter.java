@@ -3,13 +3,11 @@ package nl.hu.vkbep.example.lingo.words.core.application;
 import nl.hu.vkbep.example.lingo.words.core.domain.WordFilter;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordReader;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-@Service
 public class WordImporter {
 	private final WordReader reader;
 	private final WordFilter filter;

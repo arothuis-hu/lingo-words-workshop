@@ -1,8 +1,5 @@
 package nl.hu.vkbep.example.lingo.words.core.domain;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class LingoWordFilter implements WordFilter {
 	@Override
 	public boolean verify(String word) {
