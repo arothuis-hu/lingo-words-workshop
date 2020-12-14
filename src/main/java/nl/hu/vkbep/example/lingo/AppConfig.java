@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.nio.file.Path;
+import java.util.Random;
 
 @Configuration
 public class AppConfig {
@@ -28,7 +29,7 @@ public class AppConfig {
 
     @Bean
     public WordService wordService() {
-        return new WordService(this.randomWordReader());
+        return new WordService(new Random(), this.randomWordReader());
     }
 
     @Bean
