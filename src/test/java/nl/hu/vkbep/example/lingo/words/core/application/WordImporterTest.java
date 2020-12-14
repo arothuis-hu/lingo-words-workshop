@@ -18,6 +18,7 @@ class WordImporterTest {
 				"bier"
 		);
 
+		// Reader (mock) --> Filter (mock) --> Writer (spy)
 		WordReader mockReader = mock(WordReader.class);
 		when(mockReader.readWords())
 			.thenReturn(wordList.stream());
@@ -28,14 +29,11 @@ class WordImporterTest {
 
 		WordWriter spyWriter = spy(WordWriter.class);
 
-		WordImporter importer = new WordImporter(
-				mockReader,
-				mockFilter,
-				spyWriter
-		);
+		WordImporter importer = new WordImporter(mockReader, mockFilter, spyWriter);
 
 		importer.importWords();
 
+		// Writer should only be invoked once when import words is run
 		verify(spyWriter, times(1))
 			   .writeWords(wordList);
 	}
