@@ -2,6 +2,7 @@ package nl.hu.vkbep.example.lingo.words.infrastructure.driven.file;
 
 import lombok.extern.slf4j.Slf4j;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
+import nl.hu.vkbep.example.lingo.words.core.ports.exception.CannotWriteWords;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class TxtFileWordWriter implements WordWriter {
 			log.info("Writing words to file {}", this.target);
 			Files.writeString(target, String.join("\n", words));
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw CannotWriteWords.because(e);
 		}
 	}
 }
