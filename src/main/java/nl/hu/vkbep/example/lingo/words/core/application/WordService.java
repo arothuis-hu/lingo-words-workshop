@@ -22,6 +22,7 @@ public class WordService {
 
         List<String> words = this.reader
                 .readWords()
+                .filter((word) -> word.length() == length)
                 .collect(Collectors.toList());
 
         return words.get(random.nextInt(words.size()));

@@ -4,9 +4,11 @@ import nl.hu.vkbep.example.lingo.words.core.application.WordImporter;
 import nl.hu.vkbep.example.lingo.words.core.application.WordService;
 import nl.hu.vkbep.example.lingo.words.core.domain.LingoWordFilter;
 import nl.hu.vkbep.example.lingo.words.core.domain.WordFilter;
+import nl.hu.vkbep.example.lingo.words.core.ports.WordReader;
 import nl.hu.vkbep.example.lingo.words.core.ports.WordWriter;
 import nl.hu.vkbep.example.lingo.words.infrastructure.driven.file.TxtFileWordReader;
 import nl.hu.vkbep.example.lingo.words.infrastructure.driven.file.TxtFileWordWriter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,17 +40,19 @@ public class AppConfig {
     }
 
     @Bean
-    public TxtFileWordReader importWordReader() {
+    @Qualifier("import-word")
+    public WordReader importWordReader() {
         return new TxtFileWordReader(Path.of(inputSource));
     }
 
     @Bean
-    public TxtFileWordWriter importWordWriter() {
+    public WordWriter importWordWriter() {
         return new TxtFileWordWriter(Path.of(outputSource));
     }
 
     @Bean
-    public TxtFileWordReader randomWordReader() {
+    @Qualifier("random-word")
+    public WordReader randomWordReader() {
         return new TxtFileWordReader(Path.of(outputSource));
     }
 }

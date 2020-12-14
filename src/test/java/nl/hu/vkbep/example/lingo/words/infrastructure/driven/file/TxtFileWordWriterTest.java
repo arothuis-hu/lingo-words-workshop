@@ -11,7 +11,8 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TxtFileWordWriterTest {
     public static final Path TARGET_PATH = Path.of("src/test/resources/word-output.txt");
