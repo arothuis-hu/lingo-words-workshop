@@ -1,4 +1,3 @@
-# This is not used yet
 version: "3.7"
 services:
   db:
